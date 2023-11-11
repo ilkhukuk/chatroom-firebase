@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0;
@@ -7,11 +7,13 @@
 }
 
 body {
+  position: relative;
   margin: 0;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   min-height: 100vh;
-  font-family: 'poppins';
+  font-family: "poppins";
+  z-index: 11111111;
 }
 
 h1 {
@@ -26,7 +28,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #2d2adb;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -46,7 +48,7 @@ button:focus-visible {
 }
 
 .auth {
-  background: white;
+  background: rgb(243, 149, 149);
   color: black;
   width: 60vw;
   max-width: 600px;
@@ -58,15 +60,26 @@ button:focus-visible {
   align-items: center;
   gap: 50px;
 
+  .ilk {
+    :hover {
+      scale: 0.95;
+    }
+    :focus {
+      background-color: white;
+      color: black;
+    }
+  }
+
   @media (max-width: 700px) {
     width: 90vw;
   }
 
   button {
-    color: white;
+    color: rgb(236, 245, 238);
     display: flex;
     align-items: center;
     gap: 10px;
+
     img {
       width: 40px;
     }
@@ -75,7 +88,7 @@ button:focus-visible {
 
 // oda seçme sayfası
 .room-page {
-  background: white;
+  background: rgba(246, 248, 133, 0.699);
   color: #1a1a1a;
   padding: 50px 60px;
   border-radius: 10px;
@@ -108,9 +121,9 @@ button:focus-visible {
 
 // sohbet sayfası
 .chat {
-  background: #f5f5f5;
+  background: #f7a4a4;
   height: 70vh;
-  width: 70vw;
+  width: 60vw;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -118,6 +131,7 @@ button:focus-visible {
   max-width: 800px;
   border-radius: 10px;
   overflow: hidden;
+  font-weight: bolder;
 
   @media (max-width: 650px) {
     width: 100vw;
@@ -127,7 +141,8 @@ button:focus-visible {
 }
 
 .chat header {
-  background: #4d4c7d;
+  background: #c490b0;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -141,18 +156,22 @@ button:focus-visible {
   .user {
     font-weight: normal;
     text-transform: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f490b0;
+    color: white;
   }
 
   button {
-    background: #f99417;
-    color: #f5f5f5;
+    background: #f490b0;
+    color: white;
   }
 }
 
 .chat form {
   display: flex;
   justify-content: center;
-  background: #4d4c7d;
+  background: #c490b0;
   padding: 10px;
   gap: 20px;
 
@@ -164,9 +183,19 @@ button:focus-visible {
     font-size: 16px;
   }
   button {
-    background: #f99417;
+    background: #f490b0;
     color: white;
   }
+}
+
+.clear {
+  display: flex;
+  padding: 3px;
+
+  button{
+    margin: auto;
+  color: white;}
+
 }
 
 .chat main {
@@ -177,11 +206,12 @@ button:focus-visible {
   overflow-y: auto;
   color: #1a1a1a;
   padding: 5px;
+  background-color: white;
 }
 
 .msg-user {
   align-self: end;
-  background: #f99417;
+  background: rgb(247, 75, 23);
   color: white;
   padding: 4px 8px;
   border-radius: 7px 7px 0 7px;
