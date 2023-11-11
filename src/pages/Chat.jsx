@@ -6,16 +6,19 @@ import {
   query,
   where,
   orderBy,
-} from "firebase/firestore";
-import { auth, db } from "../firebase/config";
-import { useEffect, useState } from "react";
-import Message from "./../components/Message";
+} from 'firebase/firestore';
+import { auth, db } from '../firebase/config';
+import { useEffect, useState } from 'react';
+import Message from './../components/Message';
+
+
 
 const Chat = ({ room, setRoom }) => {
-
   // günceleyyiceğimiz kolleksiyonun referansını alma
-  const messagesCol = collection(db, "messages");
+  const messagesCol = collection(db, 'messages');
   const [messages, setMessages] = useState([]);
+  
+
 
   // mesajı veritabınına ekler
   const handleSubmit = async (e) => {
@@ -34,16 +37,19 @@ const Chat = ({ room, setRoom }) => {
         uid: auth.currentUser.uid,
       },
       // server'ın zamanı oluşturmasnı sağlar
-      createdAt: serverTimestamp(),
+      createdAt: serverTimestamp(),      
     });
-  };
+
+    e.target[0].value = ""
+   
+  };   
 
   useEffect(() => {
     //  filtreme ayarlarını tanımlama
     const queryOptions = query(
       messagesCol,
-      where("room", "==", room),
-      orderBy("createdAt", "asc")
+      where('room', '==', room),
+      orderBy('createdAt', 'asc')
     );
 
     // on snaphot kollekisyon her değiştiğinde
@@ -71,15 +77,26 @@ const Chat = ({ room, setRoom }) => {
       </header>
 
       <main>
-        {messages?.map((msg) => (<Message key={msg.id} msg={msg} />))}
+        {messages?.map((msg) => (
+          <Message key={msg.id} msg={msg} />
+        ))}
       </main>
 
       <form onSubmit={handleSubmit}>
-        <input required type="text" placeholder="mesajınızı yazınız..." />
-        <button>Gönder</button>
+        <input
+          required
+          type="text"
+          placeholder="mesajınızı yazınız..."
+        />
+        <button>Gönder</button>        
       </form>
+
+      <div className='clear'>
+      <button> Sohbeti Temizle </button>
+      </div>
     </div>
   );
 };
+
 
 export default Chat;
