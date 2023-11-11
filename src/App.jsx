@@ -1,14 +1,14 @@
-import { useState } from "react";
-import AuthPage from "./pages/AuthPage";
-import Chat from "./pages/Chat";
-import "./style.scss";
-import { signOut } from "firebase/auth";
-import { auth } from "./firebase/config";
+import { useState } from 'react';
+import AuthPage from './pages/AuthPage';
+import Chat from './pages/Chat';
+import './style.scss';
+import { signOut } from 'firebase/auth';
+import { auth } from './firebase/config';
 
 function App() {
   // kullanıcı yetkili mi state'ini tutuyoruz
   // state'in ilk değeri local'deki token'a göre belirlernir
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("token"));
+  const [isAuth, setIsAuth] = useState(localStorage.getItem('token'));
 
   // kulanıcnın girdiği odanın state'i
   const [room, setRoom] = useState(null);
@@ -33,10 +33,10 @@ function App() {
       ) : (
         // odayı belirlemediyse > oda seçme
         <form onSubmit={handleSubmit} className="room-page">
-          <h1>Chat Odası</h1>
+          <h1> Yıldız Chat</h1>
           <p>Hangi Odaya Gireceksiniz</p>
 
-          <input type="text" placeholder="örn:haftaiçi" />
+          <input type="text" placeholder="örn:family" />
 
           <button type="submit">Odaya Gir</button>
           <button
@@ -44,7 +44,7 @@ function App() {
               signOut(auth)
                 .then(() => {
                   // lokal'den token'ı kaldırma
-                  localStorage.removeItem("token");
+                  localStorage.removeItem('token');
                   // yetkili state'ini false'a çek
                   setIsAuth(false);
                 })
